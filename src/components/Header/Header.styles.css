@@ -1,0 +1,41 @@
+
+.header {
+    position: relative;
+    height: 60px;
+    z-index: 999;
+    border: 1px solid lightgray;
+    padding-top: 1%;
+  }
+
+  .logo{
+    font-family: Roboto;
+    padding: 3%;
+    font-size: 1.5rem;
+    color: darkgoldenrod;
+  }
+
+  .search{
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    margin: 0.5%;
+    height: 25px;
+    border: 0px;
+    border-bottom: 1px solid lightgray;
+    padding: 0.5%;
+    width: 40%;
+  }
+
+  .search:focus {
+    outline: 0;
+    border-bottom: 2px solid darkgoldenrod;
+  }
+
+  .cart{
+    height: 30px;
+    margin: 15px 30px;
+    float: right;
+    filter: invert(46%) sepia(98%) saturate(584%) hue-rotate(11deg) brightness(94%) contrast(91%);
+    cursor: pointer;
+  }

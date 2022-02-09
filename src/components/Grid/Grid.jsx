@@ -3,7 +3,7 @@ import cash from "../../utils/pipes/cash";
 import "./Grid.styles.css";
 function Grid({ items, title }) {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="container">
       <label className="grid-title">{title}</label>
       <div className="grid">
         {items.map((item) => {

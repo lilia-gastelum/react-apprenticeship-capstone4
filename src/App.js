@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import ProductList from './pages/ProductList';
 function App() {
 
 
@@ -12,6 +13,9 @@ function App() {
         <Switch>
           <Route exact path="/home">
             <Home />
+          </Route>
+          <Route exact path="/product-list">
+            <ProductList />
           </Route>
           <Redirect from='**' to={"/home"}/>
         </Switch>

@@ -2,13 +2,7 @@ import React from "react";
 import "./Pagination.styles.css";
 
 function Pagination({ page, totalPages }) {
-  const isActive = (index) => {
-    if (index + 1 === page) {
-      return "active";
-    } else {
-      return "";
-    }
-  };
+  const isActive = index => (index + 1) === page ? "active" : "";
 
   return (
     <div className="pagination-container">

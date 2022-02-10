@@ -5,13 +5,7 @@ import "./SideBar.styles.css";
 function SideBar({ children, selectedOptions, setSelectedOptions }) {
   const { categories } = useMocks();
 
-  const isSelected = (id) => {
-    if (selectedOptions.find((option) => option === id)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  const isSelected = id => selectedOptions.includes(id)
 
   const selectOption = (id) => {
     setSelectedOptions(

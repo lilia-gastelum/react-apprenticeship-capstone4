@@ -1,6 +1,8 @@
 
 .header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
     height: 60px;
     z-index: 999;
     border: 1px solid lightgray;
@@ -9,9 +11,10 @@
 
   .logo{
     font-family: Roboto;
-    padding: 3%;
+    padding: 3% 3% 0%;
     font-size: 1.5rem;
     color: darkgoldenrod;
+    cursor: pointer;
   }
 
   .search{

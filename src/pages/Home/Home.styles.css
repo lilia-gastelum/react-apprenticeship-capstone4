@@ -1,0 +1,18 @@
+.home{
+    text-align: center;
+}
+
+.list-button{
+    background-color: darkgoldenrod;
+    cursor: pointer;
+    width: 30%;
+    font-size: 1rem;
+    border: 0px;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 30px;
+}
+.list-button:hover{
+    color: #fff;
+    background-color: goldenrod;
+}

@@ -1,3 +1,8 @@
+.container{
+  text-align: center;
+  margin: 20px 0px 50px;
+}
+
 .grid {
   margin: 0% 10%;
   display: grid;

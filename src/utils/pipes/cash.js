@@ -16,8 +16,8 @@ const cash = (text) => {
   const REGEX = /\B(?=(\d{3})+(?!\d))/g;
   const formattedWholePart = wholePart.toString().replace(REGEX, ",")
   const formattedDecimalPart = decimalPart ? `.${decimalPart}` : "";
-  const value = formattedWholePart + decimalPart;
-  return "$" + val;
+  const value = formattedWholePart + formattedDecimalPart;
+  return "$" + value;
 };
 
 export default cash;

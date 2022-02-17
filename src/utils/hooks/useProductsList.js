@@ -36,8 +36,6 @@ export function useProductsList(ids, page, term = "") {
         );
         const data = await response.json();
 
-        // const data = {results:[], page: 1, total_pages:2}
-
         setProducts({
           data: data.results,
           page: data.page,

@@ -7,7 +7,7 @@ import { useTermContext } from "../../utils/contexts/TermContext";
 import { useProductsList } from "../../utils/hooks/useProductsList";
 
 function SearchResults() {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions] = useState([]);
   const {term} = useTermContext();
   const [page, setPage] = useState(1);
   const {

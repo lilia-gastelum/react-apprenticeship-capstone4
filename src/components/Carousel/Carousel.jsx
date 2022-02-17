@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import "./Carousel.styles.css";
 
 function Carousel({ banners }) {
@@ -22,7 +22,11 @@ function Carousel({ banners }) {
       <div className="carousel-nav">
         {banners.map((banner, i) => {
           return (
-            <a className="slider-nav" key={`slide-${i + 1}`} href={`#slide-${i + 1}`}>
+            <a
+              className="slider-nav"
+              key={`slide-${i + 1}`}
+              href={`#slide-${i + 1}`}
+            >
               &nbsp;
             </a>
           );
@@ -31,5 +35,9 @@ function Carousel({ banners }) {
     </section>
   );
 }
+
+Carousel.propTypes = {
+  banners: PropTypes.array,
+};
 
 export default Carousel;

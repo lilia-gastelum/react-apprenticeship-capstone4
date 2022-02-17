@@ -2,19 +2,31 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Carousel from "../../components/Carousel";
 import Grid from "../../components/Grid/Grid";
-import { useMocks } from "../../utils/hooks/useMocks";
+import { useFeaturedBanners } from "../../utils/hooks/useFeaturedBanners";
+import { useFeaturedProducts } from "../../utils/hooks/useFeaturedProducts";
+import { useProductCategories } from "../../utils/hooks/useProductCategories";
 import Categories from "../Categories";
-import './Home.styles.css';
+import Loader from "../../components/Loader";
+import "./Home.styles.css";
 function Home() {
   const history = useHistory();
-  const { banners, categories, products } = useMocks();
+  const { data: featuredBanners, isLoading: loadingBanners } = useFeaturedBanners();
+  const { data: productCategories, isLoading: loadingCategories } = useProductCategories();
+  const { data: featuredProducts, isLoading: loadingProducts } = useFeaturedProducts();
+  const redirectToProductList = () => history.push("/products");
+  const redirectDetail = (product) => {
+    history.push(`/product/${product.id}`, { productId: product.id });
+  };
 
-  const redirectToProductList = () => history.push("/product-list")
+  if(loadingBanners || loadingCategories || loadingProducts){
+    return <Loader/>
+  }
+
   return (
     <div className="home">
-      <Carousel banners={banners} />
-      <Categories categories={categories} />
-      <Grid title={"Our Products"} items={products} />
+      <Carousel banners={featuredBanners} />
+      <Categories categories={productCategories} />
+      <Grid title={"Our Products"} items={featuredProducts} onClickFunction={redirectDetail} />
       <button className="list-button" onClick={redirectToProductList}>
         View all products
       </button>

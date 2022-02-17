@@ -1,11 +1,13 @@
 import React from "react";
-import { useMocks } from "../../utils/hooks/useMocks";
+import PropTypes from "prop-types";
+import { useProductCategories } from "../../utils/hooks/useProductCategories";
+import Loader from "../Loader";
 import "./SideBar.styles.css";
 
 function SideBar({ children, selectedOptions, setSelectedOptions }) {
-  const { categories } = useMocks();
+  const { data: categories, isLoading } = useProductCategories();
 
-  const isSelected = id => selectedOptions.includes(id)
+  const isSelected = (id) => selectedOptions.includes(id);
 
   const selectOption = (id) => {
     setSelectedOptions(
@@ -14,6 +16,10 @@ function SideBar({ children, selectedOptions, setSelectedOptions }) {
         : [...selectedOptions, id]
     );
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -29,12 +35,20 @@ function SideBar({ children, selectedOptions, setSelectedOptions }) {
             </div>
           );
         })}
+        <div className={`remove`} onClick={() => setSelectedOptions([])}>
+          Clear all filters
+        </div>
       </div>
-      <div className="content">
-        {children}
-      </div>
+      <div className="content">{children}</div>
     </>
   );
 }
+
+SideBar.propTypes = {
+  children: PropTypes.node,
+  selectedOptions: PropTypes.array,
+  setSelectedOptions: PropTypes.func,
+}
+
 
 export default SideBar;

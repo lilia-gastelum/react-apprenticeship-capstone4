@@ -4,7 +4,7 @@
 }
 
 .grid {
-  margin: 0% 10%;
+  margin: 80px 10% 0px;
   display: grid;
   grid-gap: 10px;
   text-align: center;
@@ -13,21 +13,18 @@
 @media only screen and (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-template-areas: "a a" "a a";
   }
 }
@@ -35,13 +32,12 @@
 @media only screen and (min-width: 1200px) {
   .grid {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: "a a" "a a";
   }
 }
 
 .grid-thing {
-  margin: 65px 40px;
+  padding: 0px 40px 200px 40px;
   height: 500px;
   cursor: pointer;
 }
@@ -64,4 +60,22 @@
 
 .grid-title {
   font-size: 2.5rem;
+}
+
+.cart-btn{
+  background-color: darkgoldenrod;
+  border: 0px;
+  border-radius: 5px;
+  height: 30px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.cart-btn:hover{
+  background-color: goldenrod;
+  color: #fff;
+  border: 0px;
+  border-radius: 5px;
+  height: 30px;
+  width: 50%;
 }

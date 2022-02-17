@@ -5,7 +5,7 @@ import { useLatestAPI } from './useLatestAPI';
 export function useFeaturedBanners() {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [featuredBanners, setFeaturedBanners] = useState(() => ({
-    data: {},
+    data: [],
     isLoading: true,
   }));
 
@@ -18,7 +18,7 @@ export function useFeaturedBanners() {
 
     async function getFeaturedBanners() {
       try {
-        setFeaturedBanners({ data: {}, isLoading: true });
+        setFeaturedBanners({ data: [], isLoading: true });
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
@@ -28,11 +28,15 @@ export function useFeaturedBanners() {
             signal: controller.signal,
           }
         );
-        const data = await response.json();
+        const dataJson = await response.json();
+
+        const data = dataJson.results.map((image) => {
+          return image.data.main_image;
+        });
 
         setFeaturedBanners({ data, isLoading: false });
       } catch (err) {
-        setFeaturedBanners({ data: {}, isLoading: false });
+        setFeaturedBanners({ data: [], isLoading: false });
         console.error(err);
       }
     }

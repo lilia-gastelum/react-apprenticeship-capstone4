@@ -1,0 +1,73 @@
+.grid-container {
+  display: grid;
+  padding: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+  .grid-container {
+    grid-template-columns: auto;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .grid-container {
+    grid-template-columns: auto auto;
+    margin: 0 10%;
+  }
+}
+
+.grid-2column {
+  padding: 20px;
+}
+
+.specs {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.specs> tbody > tr > td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd !important;
+}
+
+.prod-title {
+  font-size: 2rem;
+  color: darkgoldenrod;
+  font-weight: bold;
+}
+
+.prod-info {
+  font-weight: bold;
+  font-size: small;
+}
+
+.prod-price {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.quantity-input{
+  border: 1px solid darkgoldenrod;
+  padding: 10px;
+  width: 60px;
+}
+
+.quantity-input:focus {
+  outline: 0;
+  border-bottom: 1px solid goldenrod;
+}
+
+.cart-button{
+  border: 0px;
+  background-color: darkgoldenrod;
+  padding: 11px;
+  cursor: pointer;
+}
+
+.cart-button:hover{
+  background-color: goldenrod;
+  color: #fff;
+}

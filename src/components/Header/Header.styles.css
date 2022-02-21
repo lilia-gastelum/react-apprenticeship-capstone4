@@ -35,10 +35,26 @@
     border-bottom: 2px solid darkgoldenrod;
   }
 
+  .icon-container{
+    float: right;
+    cursor: pointer;
+  }
+
   .cart{
     height: 30px;
-    margin: 15px 30px;
+    margin: 15px 0px;
     float: right;
     filter: invert(46%) sepia(98%) saturate(584%) hue-rotate(11deg) brightness(94%) contrast(91%);
+  }
+
+  .badge{
+    height: 30px;
+    margin: 10px 30px 0px 10px;
+    padding: 10px 10px 0px;
+    float: right;
     cursor: pointer;
+    color: #fff;
+    background-color: darkgoldenrod;
+    font-weight: bold;
+    border-radius: 15px;
   }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { useLocation } from "react-router-dom";
@@ -5,9 +6,10 @@ import { useProduct } from "../../utils/hooks/useProduct";
 import Loader from "../../components/Loader";
 import cash from "../../utils/pipes/cash";
 import "./ProductDetail.styles.css";
-import { useState } from "react";
+import { useCartContext } from "../../utils/contexts/CartContext";
 
 function ProductDetail() {
+  const { addProduct } = useCartContext();
   const location = useLocation();
   const productId = location.state.productId;
   const { data: product, isLoading } = useProduct(productId);
@@ -16,6 +18,14 @@ function ProductDetail() {
   if (isLoading) {
     return <Loader />;
   }
+
+  const stockAvailable = (stock) => {
+    return quantity > 0 && quantity <= stock ? true : false;
+  };
+
+  const addToCart = () => {
+    addProduct({ quantity: Number(quantity), product });
+  };
 
   return (
     <>
@@ -45,7 +55,14 @@ function ProductDetail() {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
-            <button className="cart-button">Add to cart</button>
+            {stockAvailable(product.data.stock) && (
+              <button
+                className="cart-button"
+                onClick={addToCart}
+              >
+                Add to cart
+              </button>
+            )}
             <p>Specifications:</p>
             <table className="specs">
               <tbody>

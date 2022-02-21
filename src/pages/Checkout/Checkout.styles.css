@@ -1,0 +1,59 @@
+.checkout {
+  width: 60%;
+  margin: auto;
+}
+
+.checkout > div > input,
+.checkout > div > textarea {
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.finish {
+  text-align: right;
+}
+
+.finish > button{
+    background-color: darkgoldenrod;
+    border: 0px;
+    padding: 20px;
+    margin-left: 10px;
+}
+
+.finish > button:hover{
+    background-color: goldenrod;
+    color: #fff;
+}
+
+.summary {
+    border-collapse: collapse;
+    border-spacing: 0;
+    white-space: nowrap;
+    margin: 10px auto;
+    width: 100%;
+  }
+  
+  .summary > tbody > tr > td,
+  .summary > thead > tr > td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    width: auto;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .summary > tbody > tr > td,
+    .summary > thead > tr > td {
+      display: block;
+    }
+  }
+  
+  .summary > thead > tr > td {
+    font-weight: bold;
+  }

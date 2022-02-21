@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useTermContext } from "../../utils/contexts/TermContext";
+import Badge from "./Badge";
 import "./Header.styles.css";
 
 function Header() {
@@ -27,7 +28,7 @@ function Header() {
         onKeyPress={(e) => handleKeyPressed(e)}
         placeholder="Search..."
       />
-      <img className="cart" alt="cart" src="/icons/shopping-cart.png" />
+      <Badge/>
     </div>
   );
 }

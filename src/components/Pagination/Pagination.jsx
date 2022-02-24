@@ -18,15 +18,32 @@ function Pagination({ page, setPage, totalPages }) {
   return (
     <div className="pagination-container">
       <div className="pagination">
-        <div onClick={goToPrevPage}>&laquo;</div>
+        <div
+          onClick={goToPrevPage}
+          className={page === 1 ? "disabled" : ""}
+          data-testid={"prev"}
+        >
+          &laquo;
+        </div>
         {[...Array(totalPages)].map((p, i) => {
           return (
-            <div key={i} className={isActive(i)} onClick={() => setPage(i + 1)}>
+            <div
+              data-testid={"page" + (i+1)}
+              key={i}
+              className={isActive(i)}
+              onClick={() => setPage(i + 1)}
+            >
               {i + 1}
             </div>
           );
         })}
-        <div onClick={goToNexPage}>&raquo;</div>
+        <div
+          onClick={goToNexPage}
+          className={page === totalPages ? "disabled" : ""}
+          data-testid={"next"}
+        >
+          &raquo;
+        </div>
       </div>
     </div>
   );

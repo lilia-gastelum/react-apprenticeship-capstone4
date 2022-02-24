@@ -12,7 +12,7 @@ function Badge() {
 
   return (
     <div className="icon-container" onClick={goToCart}>
-      <label className="badge">{cartItems.length}</label>
+      <label data-testid={"quantity-badge"} className="badge">{cartItems.length}</label>
       <img className="cart" alt="cart" src="/icons/shopping-cart.png" />
     </div>
   );

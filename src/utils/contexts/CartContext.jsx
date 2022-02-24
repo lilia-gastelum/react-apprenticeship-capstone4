@@ -21,7 +21,6 @@ const CartContextProvider = ({ children }) => {
 
   const updateProduct = (quantity, id) => {
     const existing = cartItems.find(({ product }) => product.id === id);
-    debugger
     if (quantity === '' || (quantity > 0  && existing.product.data.stock >= quantity)) {
       existing.quantity = quantity;
       const newList = [

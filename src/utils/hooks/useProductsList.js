@@ -17,6 +17,7 @@ export function useProductsList(ids, page, term = "") {
     }
 
     const controller = new AbortController();
+    let isSubscribed = true;
 
     async function getProducts() {
       try {
@@ -35,16 +36,20 @@ export function useProductsList(ids, page, term = "") {
           }
         );
         const data = await response.json();
-
-        setProducts({
-          data: data.results,
-          page: data.page,
-          totalPages: data.total_pages,
-          isLoading: false,
-        });
+        
+        if (isSubscribed) {
+          setProducts({
+            data: data.results,
+            page: data.page,
+            totalPages: data.total_pages,
+            isLoading: false,
+          });
+        }
       } catch (err) {
-        setProducts({ data: [], isLoading: false });
-        console.error(err);
+        if (isSubscribed) {
+          setProducts({ data: [], isLoading: false });
+          console.error(err);
+        }
       }
     }
 
@@ -52,6 +57,7 @@ export function useProductsList(ids, page, term = "") {
 
     return () => {
       controller.abort();
+      isSubscribed = false;
     };
   }, [apiRef, isApiMetadataLoading, ids, page, term]);
 

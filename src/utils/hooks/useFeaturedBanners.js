@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
@@ -31,7 +32,7 @@ export function useFeaturedBanners() {
         const dataJson = await response.json();
 
         const data = dataJson.results.map((image) => {
-          return image.data.main_image;
+          return image.data.main_image || image.data.mainimage;
         });
 
         setFeaturedBanners({ data, isLoading: false });

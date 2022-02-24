@@ -34,16 +34,22 @@ function ShoppingCart() {
                     <td>
                       <div>
                         <img
+                          data-testid={"prod-img"}
                           height={"120px"}
                           src={item.product.data.mainimage.url}
                           alt={item.product.data.name}
                         />
-                        <label className="prod-detail">
+                        <label
+                          data-testid={"prod-name"}
+                          className="prod-detail"
+                        >
                           {item.product.data.name}
                         </label>
                       </div>
                     </td>
-                    <td>{cash(item.product.data.price)}</td>
+                    <td data-testid={"prod-price"}>
+                      {cash(item.product.data.price)}
+                    </td>
                     <td>
                       <input
                         type={"number"}
@@ -51,12 +57,15 @@ function ShoppingCart() {
                         max={item.product.data.stock}
                         value={item.quantity}
                         className="quantity-input"
+                        data-testid={"prod-quantity"}
                         onChange={(e) =>
                           updateProduct(e.target.value, item.product.id)
                         }
                       />
                     </td>
-                    <td>{cash(item.product.data.price * item.quantity)}</td>
+                    <td data-testid={"prod-subtotal"}>
+                      {cash(item.product.data.price * item.quantity)}
+                    </td>
                     <td className="remove">
                       <button
                         onClick={() => removeProduct(item.product.id)}
@@ -71,7 +80,7 @@ function ShoppingCart() {
             </tbody>
           </table>
           <div className="totals">
-            <p className="total">
+            <p data-testid={"cart-total"} className="total">
               Cart total :{" "}
               {cash(sumBy(cartItems, (o) => o.quantity * o.product.data.price))}
             </p>

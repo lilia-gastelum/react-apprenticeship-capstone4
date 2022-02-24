@@ -43,23 +43,31 @@ function ProductDetail() {
           </div>
           <div className="grid-2column">
             {" "}
-            <p className="prod-title">{product.data.name}</p>
-            <p className="prod-info">SKU: {product.data.sku}</p>
-            <p className="prod-info">Category: {product.data.category.slug}</p>
-            <p className="prod-info">Tags: {product.tags.join(", ")}</p>
-            <p>{product.data.short_description}</p>
-            <p className="prod-price">{cash(product.data.price)}</p>
+            <p data-testid="name" className="prod-title">
+              {product.data.name}
+            </p>
+            <p data-testid="sku" className="prod-info">
+              SKU: {product.data.sku}
+            </p>
+            <p data-testid="category" className="prod-info">
+              Category: {product.data.category.slug}
+            </p>
+            <p data-testid="tags" className="prod-info">
+              Tags: {product.tags.join(", ")}
+            </p>
+            <p data-testid="description">{product.data.short_description}</p>
+            <p data-testid="price" className="prod-price">
+              {cash(product.data.price)}
+            </p>
             <input
               className="quantity-input"
+              data-testid="quantity-input"
               type={"number"}
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
             {stockAvailable(product.data.stock) && (
-              <button
-                className="cart-button"
-                onClick={addToCart}
-              >
+              <button className="cart-button" onClick={addToCart}>
                 Add to cart
               </button>
             )}

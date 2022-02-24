@@ -1,4 +1,5 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+
 import App from "./App";
 
 describe("App component", () => {
@@ -12,18 +13,22 @@ describe("App component", () => {
 describe("Tests navigation", () => {
   test("Redirects from home to product list and viceversa", async () => {
     render(<App />);
-    const button = screen.getByRole(/button/i, { name: "View all products" });
+    const button = await waitFor(() => screen.getByRole(/button/i, { name: "View all products" }));
     expect(button).toBeInTheDocument();
-    fireEvent.click(button);
+    act(() => {
+      fireEvent.click(button)
+    });
     const text = await waitFor(
-      () => screen.getByText(/This is the Product List Page/i),
+      () => screen.getByText(/Clear all filters/i),
       { timeout: 2000 }
     );
     expect(text).toBeInTheDocument();
 
     const logo = screen.getByText(/Wize Home/i);
-    fireEvent.click(logo);
-    const products = screen.getByText(/Our Products/i);
+    act(() => {
+      fireEvent.click(logo)
+    });
+    const products = await waitFor(() => screen.getByText(/Our Products/i));
     expect(products).toBeInTheDocument();
   });
 });

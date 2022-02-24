@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../constants';
+import { useState, useEffect } from "react";
+import { API_BASE_URL } from "../constants";
 
 const INITIAL_API_METADATA = { ref: null, isLoading: true };
 
@@ -8,6 +8,7 @@ export function useLatestAPI() {
 
   useEffect(() => {
     const controller = new AbortController();
+    let isSubscribed = true;
 
     async function getAPIMetadata() {
       try {
@@ -20,8 +21,10 @@ export function useLatestAPI() {
 
         setApiMetadata({ ref, isLoading: false });
       } catch (err) {
-        setApiMetadata({ ref: null, isLoading: false });
-        console.error(err);
+        if (isSubscribed) {
+          setApiMetadata({ ref: null, isLoading: false });
+          console.error(err);
+        }
       }
     }
 
@@ -29,6 +32,7 @@ export function useLatestAPI() {
 
     return () => {
       controller.abort();
+      isSubscribed = false;
     };
   }, []);
 

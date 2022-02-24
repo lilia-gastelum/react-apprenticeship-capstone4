@@ -12,7 +12,7 @@ function Carousel({ banners }) {
               className={`slides-item`}
               id={`slide-${i + 1}`}
               key={`slide-${i + 1}`}
-              alt={banner.alt}
+              alt={`slide-${i + 1}`}
               tabIndex="0"
               src={banner.url}
             />

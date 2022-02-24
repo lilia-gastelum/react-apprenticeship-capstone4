@@ -15,14 +15,14 @@ function Grid({ items, title, onClickFunction }) {
     <div className="container">
       <label className="grid-title">{title}</label>
       <div className="grid">
-        {items.map((item) => {
+        {items.map((item, i) => {
           return (
             <div key={item.id} className="grid-thing">
               <div onClick={() => onClickFunction(item)}>
                 <img
                   className="grid-item"
                   src={item.data.mainimage.url}
-                  alt=""
+                  alt={`grid-item${i}`}
                 />
                 <p>{item.data.name}</p>
                 <p className="cat-text">{item.data.category.slug}</p>
